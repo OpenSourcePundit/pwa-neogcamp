@@ -1,11 +1,11 @@
-// Check if service workers are supported
+// Check if service workers are supported and available.
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', {
     scope: '/',
   });
 }
-
-const publicVapidKey = 'BJZasrx93lvmYKsqCfYuiXfCU_KyNI2PJM1xkvBIvp_SXsvBQ2H1pwmSbBpxoOWIVqpgRpS5fLTWnDoRX2cvBNQ';
+const test = 2345;
+const publicVapidKey = 'BCCgJFgydezSt6zyqVociRNB_I-alu8w41fziNnEmUYLDRISJ19xcmpD16t38FI-8OlVQw-xGAtUuOH1M6nKBR8';
 
 // Copied from the web-push documentation
 const urlBase64ToUint8Array = (base64String) => {
@@ -24,13 +24,13 @@ const urlBase64ToUint8Array = (base64String) => {
 };
 
 window.subscribe = async () => {
-  if (!('serviceWorker' in navigator)) return;
+  if (!('serviceWorker' in navigator)) return alert(`Service Worker not suppoorted`);
 
   const registration = await navigator.serviceWorker.ready;
 
   // Subscribe to push notifications
   const subscription = await registration.pushManager.subscribe({
-    userVisibleOnly: true,
+    userVisibleOnly: true, //needs to be true to get approval for push notification
     applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
   });
 
