@@ -4,7 +4,7 @@ if ('serviceWorker' in navigator) {
     scope: '/',
   });
 }
-
+const test = 2345;
 const publicVapidKey = 'BJZasrx93lvmYKsqCfYuiXfCU_KyNI2PJM1xkvBIvp_SXsvBQ2H1pwmSbBpxoOWIVqpgRpS5fLTWnDoRX2cvBNQ';
 
 // Copied from the web-push documentation
